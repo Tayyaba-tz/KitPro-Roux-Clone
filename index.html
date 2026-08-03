@@ -7,7 +7,7 @@
 <meta name="description" content="Roux is a creative studio designing how brands think and move across today's media.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -25,13 +25,6 @@
 <!-- Navbar -->
 <header class="navbar" id="navbar">
   <a href="#" class="nav-logo">Roux<span class="dot">.</span></a>
-  <nav class="nav-links">
-    <a href="#about" class="nav-link"><span>About</span></a>
-    <a href="#service" class="nav-link"><span>Service</span></a>
-    <a href="#work" class="nav-link"><span>Work</span></a>
-    <a href="#process" class="nav-link"><span>Process</span></a>
-    <a href="#cta" class="nav-link nav-cta"><span>Contact</span></a>
-  </nav>
   <button class="hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span>
   </button>
@@ -54,9 +47,18 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero-eyebrow reveal-el">— Studio for brands in motion</div>
+    <p class="hero-eyebrow reveal-el">Designing how brands think and move across today's media.</p>
 
-    <h1 class="hero-headline hero-headline--1" id="heroWord1">Studio</h1>
+    <span class="hero-handle-vertical reveal-el">@ rouxstudio . design</span>
+
+    <div class="hero-photos">
+      <figure class="hero-photo hero-photo--a" data-speed="0.85">
+        <img src="https://picsum.photos/seed/roux-surf/700/900" alt="Studio product photography, warm still life." loading="lazy">
+      </figure>
+      <figure class="hero-photo hero-photo--b" data-speed="1.15">
+        <img src="https://picsum.photos/seed/roux-robot/700/900" alt="Studio product photography, sculptural object." loading="lazy">
+      </figure>
+    </div>
 
     <div class="hero-video-frame reveal-el">
       <video id="heroVideo" muted loop playsinline autoplay
@@ -69,6 +71,8 @@
       </button>
     </div>
 
+    <h1 class="hero-headline hero-headline--1" id="heroWord1">Studio</h1>
+    <div class="hero-divider"></div>
     <h1 class="hero-headline hero-headline--2" id="heroWord2">roux</h1>
 
     <p class="hero-tagline reveal-el">Designing how brands think and move across today's media.</p>
@@ -80,15 +84,6 @@
     </div>
 
     <a class="hero-handle reveal-el" href="#cta">@ rouxstudio.design</a>
-
-    <div class="hero-photos">
-      <figure class="hero-photo hero-photo--a" data-speed="0.85">
-        <img src="https://picsum.photos/seed/roux-surf/700/900" alt="Studio product photography, warm still life." loading="lazy">
-      </figure>
-      <figure class="hero-photo hero-photo--b" data-speed="1.15">
-        <img src="https://picsum.photos/seed/roux-robot/700/900" alt="Studio product photography, sculptural object." loading="lazy">
-      </figure>
-    </div>
 
     <div class="marquee marquee--tagline">
       <div class="marquee-track">
@@ -140,17 +135,19 @@
       <img src="https://picsum.photos/seed/roux-svc-0/640/800" alt="" id="servicesPreviewImg">
     </div>
 
-    <h2 class="section-heading reveal-el">We make</h2>
-
-    <ul class="service-list" id="serviceList">
-      <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-0/640/800"><span class="service-name">Web design</span><span class="service-idx">01</span></li>
-      <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-1/640/800"><span class="service-name">Visual identity</span><span class="service-idx">02</span></li>
-      <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-2/640/800"><span class="service-name">Graphic design</span><span class="service-idx">03</span></li>
-      <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-3/640/800"><span class="service-name">Video editing</span><span class="service-idx">04</span></li>
-      <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-4/640/800"><span class="service-name">Product mockups</span><span class="service-idx">05</span></li>
-      <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-5/640/800"><span class="service-name">Content strategy</span><span class="service-idx">06</span></li>
-      <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-6/640/800"><span class="service-name">UI/UX design</span><span class="service-idx">07</span></li>
-    </ul>
+    <div class="services-pin" id="servicesPin">
+      <span class="flank flank--we">We</span>
+      <ul class="service-stack" id="serviceList">
+        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-0/640/800"><span class="service-name-main">Web</span><span class="service-name-sub">design</span></li>
+        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-1/640/800"><span class="service-name-main">Visual</span><span class="service-name-sub">identity</span></li>
+        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-2/640/800"><span class="service-name-main">Graphic</span><span class="service-name-sub">design</span></li>
+        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-3/640/800"><span class="service-name-main">Video</span><span class="service-name-sub">editing</span></li>
+        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-4/640/800"><span class="service-name-main">Product</span><span class="service-name-sub">mockups</span></li>
+        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-5/640/800"><span class="service-name-main">Content</span><span class="service-name-sub">strategy</span></li>
+        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-6/640/800"><span class="service-name-main">UI/UX</span><span class="service-name-sub">design</span></li>
+      </ul>
+      <span class="flank flank--make">make</span>
+    </div>
   </section>
 
   <!-- WORK -->

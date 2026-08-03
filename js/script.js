@@ -127,6 +127,34 @@
     onEnter: function(){ gsap.to('.footer-col', { opacity: 1, y: 0, duration: .7, stagger: .12, ease: 'power3.out' }); }
   });
 
+  /* ---------- Services: pinned scroll-scrub split ----------
+     "We" and "make" sit adjacent at rest; scrolling through the
+     pin splits them toward the edges while the 7 service lines
+     stagger-reveal in the middle — matched to the reference. */
+  var servicesPin = document.getElementById('servicesPin');
+  var serviceStack = document.getElementById('serviceList');
+  var serviceItemsEls = document.querySelectorAll('.service-item');
+
+  if (!reduceMotion && servicesPin) {
+    gsap.set(serviceItemsEls, { opacity: 0, y: 24 });
+    var splitTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: servicesPin,
+        start: 'top top',
+        end: '+=140%',
+        scrub: 0.6,
+        pin: true,
+        anticipatePin: 1
+      }
+    });
+    splitTl
+      .to(serviceStack, { maxWidth: 'min(70vw, 900px)', opacity: 1, duration: .4, ease: 'none' })
+      .to(serviceItemsEls, { opacity: 1, y: 0, stagger: .15, duration: .6, ease: 'none' }, '<0.05');
+  } else if (serviceStack) {
+    gsap.set(serviceStack, { maxWidth: 'none', opacity: 1 });
+    gsap.set(serviceItemsEls, { opacity: 1, y: 0 });
+  }
+
   /* ---------- Stat count-up ---------- */
   document.querySelectorAll('.count-up').forEach(function(el){
     var target = parseInt(el.dataset.target, 10) || 0;
