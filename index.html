@@ -1,300 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roux — Creative Studio</title>
-<meta name="description" content="Roux is a creative studio designing how brands think and move across today's media.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roux — Brand &amp; Motion Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-  <div class="preloader-word">roux</div>
-</div>
-
-<!-- Custom cursor -->
-<div class="cursor" id="cursor">
-  <span class="cursor-label" id="cursorLabel"></span>
-</div>
-
-<!-- Navbar -->
-<header class="navbar" id="navbar">
-  <a href="#" class="nav-logo">Roux<span class="dot">.</span></a>
-  <button class="hamburger" id="hamburger" aria-label="Open menu">
-    <span></span><span></span>
-  </button>
-</header>
-
-<!-- Mobile menu overlay -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" class="mobile-link">About</a>
-  <a href="#service" class="mobile-link">Service</a>
-  <a href="#work" class="mobile-link">Work</a>
-  <a href="#process" class="mobile-link">Process</a>
-  <a href="#cta" class="mobile-link">Contact</a>
-  <div class="mobile-menu-foot">
-    <span>@ rouxstudio.design</span>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__mark">Roux</div>
   </div>
-</div>
 
-<main id="smooth-wrapper">
-<div id="smooth-content">
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <p class="hero-eyebrow reveal-el">Designing how brands think and move across today's media.</p>
+  <!-- Navbar -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo">Roux</a>
+    <nav class="nav__links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
 
-    <span class="hero-handle-vertical reveal-el">@ rouxstudio . design</span>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-    <div class="hero-photos">
-      <figure class="hero-photo hero-photo--a" data-speed="0.85">
-        <img src="https://picsum.photos/seed/roux-surf/700/900" alt="Studio product photography, warm still life." loading="lazy">
-      </figure>
-      <figure class="hero-photo hero-photo--b" data-speed="1.15">
-        <img src="https://picsum.photos/seed/roux-robot/700/900" alt="Studio product photography, sculptural object." loading="lazy">
-      </figure>
-    </div>
+  <main id="top">
 
-    <div class="hero-video-frame reveal-el">
-      <video id="heroVideo" muted loop playsinline autoplay
-        poster="https://cdn.prod.website-files.com/69155183b6d23e83273160d3/69158604e3740f6ab8bbaf6f_hero-video_poster.0000000.jpg">
-        <source src="https://cdn.prod.website-files.com/69155183b6d23e83273160d3/69158604e3740f6ab8bbaf6f_hero-video_mp4.mp4" type="video/mp4">
-      </video>
-      <button class="video-toggle" id="heroVideoToggle" aria-label="Pause video">
-        <svg class="icon-pause" viewBox="0 0 24 24" fill="none"><rect x="6" y="5" width="4" height="14" fill="currentColor"/><rect x="14" y="5" width="4" height="14" fill="currentColor"/></svg>
-        <svg class="icon-play" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M7 5L19 12L7 19V5Z" fill="currentColor"/></svg>
-      </button>
-    </div>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__eyebrow reveal-line">Brand &amp; motion studio — est. 2019</div>
+      <h1 class="hero__title">
+        <span class="split-line"><span class="split-word">We</span> <span class="split-word">shape</span></span>
+        <span class="split-line"><span class="split-word">brands</span> <span class="split-word">that</span></span>
+        <span class="split-line"><span class="split-word">hold</span> <span class="split-word">their</span> <span class="split-word">heat.</span></span>
+      </h1>
+      <p class="hero__sub reveal-line">Roux is a small studio building identity, motion, and packaging for brands that make things by hand and mean it.</p>
+      <a href="#work" class="hero__scroll reveal-line">
+        <span>See the work</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </section>
 
-    <h1 class="hero-headline hero-headline--1" id="heroWord1">Studio</h1>
-    <div class="hero-divider"></div>
-    <h1 class="hero-headline hero-headline--2" id="heroWord2">roux</h1>
-
-    <p class="hero-tagline reveal-el">Designing how brands think and move across today's media.</p>
-
-    <div class="hero-roles reveal-el">
-      <div class="roles-track" id="rolesTrack">
-        <span>Designer</span><span>Dream</span><span>Developer</span>
+    <!-- Marquee -->
+    <div class="marquee">
+      <div class="marquee__track">
+        <span>Identity</span><span>Motion</span><span>Packaging</span><span>Art Direction</span><span>Sound</span><span>Web</span>
+        <span>Identity</span><span>Motion</span><span>Packaging</span><span>Art Direction</span><span>Sound</span><span>Web</span>
       </div>
     </div>
 
-    <a class="hero-handle reveal-el" href="#cta">@ rouxstudio.design</a>
-
-    <div class="marquee marquee--tagline">
-      <div class="marquee-track">
-        <span>We are a dynamic creative studio</span>
-        <span>best in design and digital solutions</span>
-        <span>we craft exceptional products</span>
-        <span>led by a passionate and expert</span>
-        <span>with a creative mindset.</span>
-        <span aria-hidden="true">We are a dynamic creative studio</span>
-        <span aria-hidden="true">best in design and digital solutions</span>
-        <span aria-hidden="true">we craft exceptional products</span>
-        <span aria-hidden="true">led by a passionate and expert</span>
-        <span aria-hidden="true">with a creative mindset.</span>
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="about__grid">
+        <div class="about__text reveal-up">
+          <span class="eyebrow">— About the studio</span>
+          <h2>Six people, one workshop, no interest in being the biggest.</h2>
+          <p>We're a small studio on purpose. Every project gets the same four hands on it from first sketch to final file, no handoffs, no account managers relaying notes. Founded in Lahore in 2019, we now work with makers and small brands across three continents.</p>
+        </div>
+        <div class="about__stats reveal-up">
+          <div class="stat">
+            <div class="stat__num" data-count="72">0</div>
+            <div class="stat__label">Brands built</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-count="6">0</div>
+            <div class="stat__label">Years firing</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-count="4">0</div>
+            <div class="stat__label">People, total</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-top">
-      <span class="badge reveal-el">– Best designer <em>(self-proclaimed)</em></span>
-      <div class="about-video-frame reveal-el">
-        <video muted loop playsinline autoplay
-          poster="https://cdn.prod.website-files.com/69155183b6d23e83273160d3/69158604e3740f6ab8bbaf6f_hero-video_poster.0000000.jpg">
-          <source src="https://cdn.prod.website-files.com/69155183b6d23e83273160d3/69158604e3740f6ab8bbaf6f_hero-video_mp4.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <div class="marquee marquee--badges">
-      <div class="marquee-track">
-        <span>5 years strong</span><span>Remote-first studio</span><span>Webflow specialist</span>
-        <span>5 years strong</span><span>Remote-first studio</span><span>Webflow specialist</span>
-        <span aria-hidden="true">5 years strong</span><span aria-hidden="true">Remote-first studio</span><span aria-hidden="true">Webflow specialist</span>
+    <div class="marquee marquee--reverse">
+      <div class="marquee__track">
+        <span>Slow work, done well</span><span>—</span><span>Small studio, sharp focus</span><span>—</span><span>Built to last longer than the trend</span><span>—</span>
+        <span>Slow work, done well</span><span>—</span><span>Small studio, sharp focus</span><span>—</span><span>Built to last longer than the trend</span><span>—</span>
       </div>
     </div>
 
-    <div class="about-bottom">
-      <figure class="about-photo reveal-el">
-        <img src="https://picsum.photos/seed/roux-splush/640/760" alt="Studio product photography with a soft splash effect." loading="lazy">
-      </figure>
-      <p class="about-stat reveal-el">Serving <span class="count-up" data-target="50">0</span>+ clients worldwide</p>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="service">
-    <div class="services-preview" id="servicesPreview">
-      <img src="https://picsum.photos/seed/roux-svc-0/640/800" alt="" id="servicesPreviewImg">
-    </div>
-
-    <div class="services-pin" id="servicesPin">
-      <span class="flank flank--we">We</span>
-      <ul class="service-stack" id="serviceList">
-        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-0/640/800"><span class="service-name-main">Web</span><span class="service-name-sub">design</span></li>
-        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-1/640/800"><span class="service-name-main">Visual</span><span class="service-name-sub">identity</span></li>
-        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-2/640/800"><span class="service-name-main">Graphic</span><span class="service-name-sub">design</span></li>
-        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-3/640/800"><span class="service-name-main">Video</span><span class="service-name-sub">editing</span></li>
-        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-4/640/800"><span class="service-name-main">Product</span><span class="service-name-sub">mockups</span></li>
-        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-5/640/800"><span class="service-name-main">Content</span><span class="service-name-sub">strategy</span></li>
-        <li class="service-item" data-img="https://picsum.photos/seed/roux-svc-6/640/800"><span class="service-name-main">UI/UX</span><span class="service-name-sub">design</span></li>
+    <!-- Services -->
+    <section class="services" id="services">
+      <span class="eyebrow reveal-up">— What we make</span>
+      <ul class="services__list">
+        <li class="services__item reveal-up" data-image="identity">
+          <span class="services__name">Brand Identity</span>
+          <span class="services__desc">Names, marks, systems built to survive a decade.</span>
+        </li>
+        <li class="services__item reveal-up" data-image="motion">
+          <span class="services__name">Motion Design</span>
+          <span class="services__desc">Logo animation, launch films, social cutdowns.</span>
+        </li>
+        <li class="services__item reveal-up" data-image="packaging">
+          <span class="services__name">Packaging</span>
+          <span class="services__desc">Structural and print design for physical goods.</span>
+        </li>
+        <li class="services__item reveal-up" data-image="web">
+          <span class="services__name">Web Design &amp; Build</span>
+          <span class="services__desc">Sites that load fast and say one thing clearly.</span>
+        </li>
+        <li class="services__item reveal-up" data-image="art">
+          <span class="services__name">Art Direction</span>
+          <span class="services__desc">Photography and set direction for campaigns.</span>
+        </li>
+        <li class="services__item reveal-up" data-image="sound">
+          <span class="services__name">Sound Identity</span>
+          <span class="services__desc">Sonic logos and audio branding for video.</span>
+        </li>
       </ul>
-      <span class="flank flank--make">make</span>
-    </div>
-  </section>
+      <div class="hover-preview" id="servicePreview"></div>
+    </section>
 
-  <!-- WORK -->
-  <section class="work" id="work">
-    <div class="marquee marquee--word" aria-hidden="true">
-      <div class="marquee-track">
-        <span>project</span><span>project</span><span>project</span><span>project</span><span>project</span>
-        <span>project</span><span>project</span><span>project</span><span>project</span><span>project</span>
+    <!-- Work -->
+    <section class="work" id="work">
+      <div class="work__bg-text" aria-hidden="true">
+        <div class="work__bg-track">WORK — WORK — WORK — WORK — WORK — WORK — </div>
       </div>
-    </div>
+      <span class="eyebrow reveal-up">— Selected work</span>
+      <h2 class="reveal-up">Six brands, six very different problems.</h2>
 
-    <div class="work-head">
-      <span class="eyebrow reveal-el">– Featured work</span>
-      <p class="work-copy reveal-el">A curated selection of standout projects showcasing our approach.</p>
-    </div>
+      <ul class="work__list">
+        <li class="work__item reveal-up" data-image="ember">
+          <span class="work__name">Ember Coffee Co.</span>
+          <span class="work__tag">Identity, Packaging</span>
+        </li>
+        <li class="work__item reveal-up" data-image="northvine">
+          <span class="work__name">North &amp; Vine</span>
+          <span class="work__tag">Identity, Web</span>
+        </li>
+        <li class="work__item reveal-up" data-image="hallow">
+          <span class="work__name">Hallow Records</span>
+          <span class="work__tag">Motion, Sound</span>
+        </li>
+        <li class="work__item reveal-up" data-image="tide">
+          <span class="work__name">Tide Studio</span>
+          <span class="work__tag">Web, Art Direction</span>
+        </li>
+        <li class="work__item reveal-up" data-image="marrow">
+          <span class="work__name">Marrow</span>
+          <span class="work__tag">Packaging, Identity</span>
+        </li>
+        <li class="work__item reveal-up" data-image="lumen">
+          <span class="work__name">Lumen Goods</span>
+          <span class="work__tag">Motion, Web</span>
+        </li>
+      </ul>
+      <div class="hover-preview" id="workPreview"></div>
+    </section>
 
-    <div class="work-preview" id="workPreview">
-      <img src="" alt="" id="workPreviewImg">
-    </div>
-
-    <ul class="work-list" id="workList">
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-metator/900/700"><span class="work-name">Metator</span><span class="work-tag">Brand &amp; web</span></li>
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-surfact/900/700"><span class="work-name">Surfact</span><span class="work-tag">Product design</span></li>
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-splush/900/700"><span class="work-name">Splush</span><span class="work-tag">Packaging</span></li>
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-spessartine/900/700"><span class="work-name">Spessartine</span><span class="work-tag">Identity</span></li>
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-boulevard/900/700"><span class="work-name">Boulevard</span><span class="work-tag">Art direction</span></li>
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-remisch/900/700"><span class="work-name">Remisch</span><span class="work-tag">Product design</span></li>
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-grandier/900/700"><span class="work-name">Grandier</span><span class="work-tag">Campaign</span></li>
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-falovi/900/700"><span class="work-name">Falovi</span><span class="work-tag">Brand &amp; web</span></li>
-      <li class="work-item" data-img="https://picsum.photos/seed/roux-p-miscell/900/700"><span class="work-name">Miscell</span><span class="work-tag">Identity</span></li>
-    </ul>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="process" id="process">
-    <h2 class="process-heading reveal-el">Think of our process as a friendly collaboration</h2>
-
-    <ol class="process-steps">
-      <li class="process-step reveal-el">
-        <span class="process-num">01</span>
-        <h3>Discover together</h3>
-        <p>This is where we get to know you and your goals. We chat, ask questions, explore what inspires you.</p>
-      </li>
-      <li class="process-step reveal-el">
-        <span class="process-num">02</span>
-        <h3>Create the ideas</h3>
-        <p>Turning your thoughts into visuals. We explore concepts, sketch possibilities, and build designs that feel true to your brand.</p>
-      </li>
-      <li class="process-step reveal-el">
-        <span class="process-num">03</span>
-        <h3>Deliver with care</h3>
-        <p>We make sure everything works smoothly, looks great everywhere, and is easy for you to use.</p>
-      </li>
-    </ol>
-
-    <div class="process-split">
-      <span class="split-word split-word--a">Work</span>
-      <span class="split-word split-word--b">flow</span>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="cta">
-    <div class="contact-inner">
-      <div class="contact-info">
-        <span class="eyebrow reveal-el">– Let's talk</span>
-        <h2 class="contact-heading reveal-el">Say hi!</h2>
-        <div class="contact-details reveal-el">
-          <p>8 am – 4 pm UTC+7<br>Monday – Saturday</p>
-          <p><a href="tel:+12345678910">(+12) 345-678-910</a></p>
-          <p><a href="mailto:studio.roux@email.com">studio.roux@email.com</a></p>
+    <!-- Process -->
+    <section class="process" id="process">
+      <span class="eyebrow reveal-up">— How a project runs</span>
+      <h2 class="reveal-up">Three stages, same as firing clay.</h2>
+      <div class="process__steps">
+        <div class="process__step reveal-up">
+          <span class="process__stage">Listen</span>
+          <p>Two weeks understanding the brand as it actually is today, not as a mood board. We sit with the founders, the product, the customers.</p>
+        </div>
+        <div class="process__step reveal-up">
+          <span class="process__stage">Shape</span>
+          <p>Concepts, refinement, one direction chosen together. This is where most of the back-and-forth lives, and where we're slowest on purpose.</p>
+        </div>
+        <div class="process__step reveal-up">
+          <span class="process__stage">Fire</span>
+          <p>Final files, motion, launch assets. Once it's fired it's fixed, so nothing reaches this stage until everyone's sure.</p>
         </div>
       </div>
+    </section>
 
-      <div class="contact-form-wrap reveal-el">
-        <form class="contact-form" id="contactForm" novalidate>
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="contact__grid">
+        <div class="contact__info reveal-up">
+          <h2>Have a brand<br>that needs shaping?</h2>
+          <p class="contact__detail">hello@Rouxstudio.co</p>
+          <p class="contact__detail">+92 300 123 4567</p>
+          <p class="contact__detail contact__hours">Mon – Fri, 10am – 6pm PKT</p>
+        </div>
+        <form class="contact__form reveal-up" id="contactForm">
           <div class="field">
-            <input type="text" id="fName" name="fName" placeholder=" " required>
-            <label for="fName">First Name</label>
+            <input type="text" id="cName" placeholder="Your name" required />
           </div>
           <div class="field">
-            <input type="email" id="fEmail" name="fEmail" placeholder=" " required>
-            <label for="fEmail">Email Address</label>
+            <input type="email" id="cEmail" placeholder="Email address" required />
           </div>
           <div class="field">
-            <input type="tel" id="fPhone" name="fPhone" placeholder=" ">
-            <label for="fPhone">Phone Number</label>
+            <textarea id="cMessage" placeholder="Tell us about the project" rows="4" required></textarea>
           </div>
-          <div class="field">
-            <textarea id="fMessage" name="fMessage" rows="3" placeholder=" " required></textarea>
-            <label for="fMessage">Message</label>
-          </div>
-          <button type="submit" class="btn-magnetic" id="submitBtn">
-            <span id="submitBtnLabel">Send now</span>
+          <button type="submit" class="contact__submit">
+            <span>Send message</span>
           </button>
+          <p class="contact__status" id="contactStatus"></p>
         </form>
-
-        <div class="form-state form-state--success" id="formSuccess">
-          <p>Thank you! Your submission has been received!</p>
-        </div>
-        <div class="form-state form-state--error" id="formError">
-          <p>Oops! Something went wrong while submitting the form.</p>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+  </main>
+
   <footer class="footer">
-    <div class="footer-top reveal-el">
-      <span class="footer-logo">Roux<span class="dot">.</span></span>
-    </div>
-    <div class="footer-grid">
-      <div class="footer-col reveal-el">
-        <h4>Site map</h4>
+    <div class="footer__top">
+      <div class="footer__col">
+        <span class="footer__heading">Site map</span>
         <a href="#about">About</a>
-        <a href="#service">Service</a>
+        <a href="#services">Services</a>
         <a href="#work">Work</a>
         <a href="#process">Process</a>
-        <a href="#cta">Contact</a>
+        <a href="#contact">Contact</a>
       </div>
-      <div class="footer-col reveal-el">
-        <h4>Utilities</h4>
-        <a href="#">Style Guide</a>
-        <a href="#">License</a>
-        <a href="#">Changelog</a>
-        <a href="#">Instruction</a>
-      </div>
-      <div class="footer-col reveal-el">
-        <h4>Social</h4>
-        <a href="#">Facebook</a>
-        <a href="#">Twitter</a>
+      <div class="footer__col">
+        <span class="footer__heading">Elsewhere</span>
         <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Are.na</a>
+      </div>
+      <div class="footer__col footer__col--wordmark">
+        <span class="footer__wordmark">Roux</span>
+        <span class="footer__tag">Brand &amp; motion studio, Lahore</span>
       </div>
     </div>
-    <div class="footer-credit reveal-el">
-      <span>Roux, a studio built to show what motion can do.</span>
-      <span>Design reference: Kitpro — rebuilt for this brief.</span>
+    <div class="footer__bottom">
+      <span>© 2026 Roux Studio. All rights reserved.</span>
+      <span>Built by hand, in HTML &amp; CSS.</span>
     </div>
   </footer>
 
-</div>
-</main>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
