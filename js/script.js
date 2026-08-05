@@ -32,7 +32,7 @@ function animateGlow() {
 }
 animateGlow();
 
-document.querySelectorAll("a, button, .services__item, .work__item").forEach((el) => {
+document.querySelectorAll("a, button, .services__item, .work__card").forEach((el) => {
   el.addEventListener("mouseenter", () => cursor.classList.add("is-active"));
   el.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
 });
@@ -59,22 +59,39 @@ window.addEventListener("scroll", () => {
   lastScrollY = currentScrollY;
 });
 
-// ===================== MOBILE MENU =====================
+// ===================== SLIDE-IN MENU PANEL =====================
 const navToggle = document.getElementById("navToggle");
 const mobileMenu = document.getElementById("mobileMenu");
+const menuClose = document.getElementById("menuClose");
+const menuScrim = document.getElementById("menuScrim");
 
-navToggle.addEventListener("click", () => {
-  const isOpen = mobileMenu.classList.toggle("is-open");
-  navToggle.classList.toggle("is-open", isOpen);
-  document.body.style.overflow = isOpen ? "hidden" : "";
+function openMenu() {
+  mobileMenu.classList.add("is-open");
+  document.body.style.overflow = "hidden";
+}
+function closeMenu() {
+  mobileMenu.classList.remove("is-open");
+  document.body.style.overflow = "";
+}
+
+navToggle.addEventListener("click", openMenu);
+menuClose.addEventListener("click", closeMenu);
+menuScrim.addEventListener("click", closeMenu);
+
+mobileMenu.querySelectorAll(".menu-panel__links a").forEach((link) => {
+  link.addEventListener("click", closeMenu);
 });
 
-mobileMenu.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("is-open");
-    navToggle.classList.remove("is-open");
-    document.body.style.overflow = "";
-  });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeMenu();
+});
+
+// ===================== PROMO POPUP (bottom left, closable) =====================
+const popup = document.getElementById("popup");
+const popupClose = document.getElementById("popupClose");
+
+popupClose.addEventListener("click", () => {
+  popup.classList.add("is-closed");
 });
 
 // ===================== HERO SPLIT-TEXT REVEAL =====================
@@ -88,14 +105,14 @@ function playHeroReveal() {
     });
   });
 
-  // hero sub + scroll cue fade in slightly after the heading
+  // hero tagline + handle fade in slightly after the heading
   document.querySelectorAll(".hero .reveal-line").forEach((el, i) => {
-    setTimeout(() => el.classList.add("in-view"), 500 + i * 120);
+    setTimeout(() => el.classList.add("in-view"), 300 + i * 120);
   });
 }
 
 // ===================== SCROLL REVEALS (IntersectionObserver) =====================
-const revealTargets = document.querySelectorAll(".reveal-up");
+const revealTargets = document.querySelectorAll(".reveal-up, .reveal-scale");
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -109,57 +126,22 @@ const revealObserver = new IntersectionObserver(
 );
 revealTargets.forEach((el) => revealObserver.observe(el));
 
-// ===================== STAT COUNTERS =====================
-const statEls = document.querySelectorAll(".stat__num");
-const statObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = Number(el.dataset.count);
-      const duration = 1400;
-      const start = performance.now();
-
-      function tick(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(eased * target);
-        if (progress < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-      statObserver.unobserve(el);
-    });
-  },
-  { threshold: 0.4 }
-);
-statEls.forEach((el) => statObserver.observe(el));
-
-// ===================== HOVER PREVIEW: services + work (cursor-follow image) =====================
-function setupHoverPreview(itemSelector, previewEl) {
-  const items = document.querySelectorAll(itemSelector);
-
-  items.forEach((item) => {
-    item.addEventListener("mouseenter", () => {
-      previewEl.dataset.tag = item.dataset.image;
-      previewEl.textContent = item.dataset.image;
-      previewEl.classList.add("is-visible");
-      cursorGlow.classList.add("is-visible");
-    });
-
-    item.addEventListener("mousemove", (e) => {
-      previewEl.style.left = e.clientX + 40 + "px";
-      previewEl.style.top = e.clientY + "px";
-    });
-
-    item.addEventListener("mouseleave", () => {
-      previewEl.classList.remove("is-visible");
-      cursorGlow.classList.remove("is-visible");
-    });
+// ===================== HOVER PREVIEW: services (cursor-follow glow) =====================
+const servicePreview = document.getElementById("servicePreview");
+document.querySelectorAll(".services__item").forEach((item) => {
+  item.addEventListener("mouseenter", () => {
+    servicePreview.classList.add("is-visible");
+    cursorGlow.classList.add("is-visible");
   });
-}
-
-setupHoverPreview(".services__item", document.getElementById("servicePreview"));
-setupHoverPreview(".work__item", document.getElementById("workPreview"));
+  item.addEventListener("mousemove", (e) => {
+    servicePreview.style.left = e.clientX + 40 + "px";
+    servicePreview.style.top = e.clientY + "px";
+  });
+  item.addEventListener("mouseleave", () => {
+    servicePreview.classList.remove("is-visible");
+    cursorGlow.classList.remove("is-visible");
+  });
+});
 
 // ===================== CONTACT FORM (client-side only, no backend) =====================
 const contactForm = document.getElementById("contactForm");
@@ -184,11 +166,11 @@ contactForm.addEventListener("submit", (event) => {
     submitBtn.classList.remove("is-loading");
 
     if (isValid) {
-      contactStatus.textContent = "Thanks — we'll get back to you within a day or two.";
+      contactStatus.textContent = "Thank you! Your submission has been received!";
       contactStatus.classList.add("is-visible", "is-success");
       contactForm.reset();
     } else {
-      contactStatus.textContent = "Something's missing — check the fields and try again.";
+      contactStatus.textContent = "Oops! Something went wrong while submitting the form.";
       contactStatus.classList.add("is-visible", "is-error");
     }
   }, 900);

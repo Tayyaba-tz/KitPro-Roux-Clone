@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Roux — Brand &amp; Motion Studio</title>
+<title>Roux — Studio</title>
+<meta name="description" content="Roux is a creative studio designing how brands think and move across today's media." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -20,151 +21,178 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-glow" id="cursorGlow"></div>
 
+  <!-- Promo popup, bottom left -->
+  <div class="popup" id="popup">
+    <button class="popup__close" id="popupClose" aria-label="Close popup">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <p class="popup__text">Custom Webflow. Half the Cost. — Kitpro</p>
+    <div class="popup__actions">
+      <a href="#cta" class="popup__btn popup__btn--ghost">Start a Project</a>
+      <a href="#cta" class="popup__btn popup__btn--solid">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Floating utility buttons, bottom right -->
+  <div class="floaters">
+    <a href="#work" class="floater" aria-label="See work">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2v6M6 8a4 4 0 1 0 4 4"/><path d="M18 2v6M18 8a4 4 0 1 1-4 4"/><path d="M6 12v6a2 2 0 0 0 2 2h2M18 12v6a2 2 0 0 1-2 2h-2"/></svg>
+    </a>
+    <a href="#top" class="floater floater--muted" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    </a>
+  </div>
+
   <!-- Navbar -->
   <header class="nav" id="nav">
     <a href="#top" class="nav__logo">Roux</a>
-    <nav class="nav__links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
-    </nav>
     <button class="nav__toggle" id="navToggle" aria-label="Open menu">
       <span></span><span></span>
     </button>
   </header>
 
-  <!-- Mobile menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#work">Work</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
+  <!-- Slide-in menu panel -->
+  <div class="menu-panel" id="mobileMenu">
+    <div class="menu-panel__scrim" id="menuScrim"></div>
+    <div class="menu-panel__drawer">
+      <button class="menu-panel__close" id="menuClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <nav class="menu-panel__links">
+        <a href="#about">About</a>
+        <a href="#service">Service</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#cta">Contact</a>
+      </nav>
+    </div>
   </div>
 
   <main id="top">
 
     <!-- Hero -->
-    <section class="hero">
-      <div class="hero__eyebrow reveal-line">Brand &amp; motion studio — est. 2019</div>
+    <section class="hero" id="about">
+      <div class="hero__top">
+        <p class="hero__tagline reveal-line">Designing how brands think and<br>move across today's media.</p>
+        <span class="hero__handle reveal-line">@ rouxstudio . design</span>
+      </div>
+
       <h1 class="hero__title">
-        <span class="split-line"><span class="split-word">We</span> <span class="split-word">shape</span></span>
-        <span class="split-line"><span class="split-word">brands</span> <span class="split-word">that</span></span>
-        <span class="split-line"><span class="split-word">hold</span> <span class="split-word">their</span> <span class="split-word">heat.</span></span>
+        <span class="split-line"><span class="split-word">Studio</span></span>
+        <span class="hero__rule"></span>
+        <span class="split-line"><span class="split-word">roux</span></span>
       </h1>
-      <p class="hero__sub reveal-line">Roux is a small studio building identity, motion, and packaging for brands that make things by hand and mean it.</p>
-      <a href="#work" class="hero__scroll reveal-line">
-        <span>See the work</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
+
+      <div class="hero__cluster">
+        <img class="hero__cluster-img hero__cluster-img--cat reveal-scale" src="images/hero-cat.jpg" alt="Cat wearing sunglasses" />
+        <img class="hero__cluster-img hero__cluster-img--swatch reveal-scale" src="images/hero-skincare.jpg" alt="" />
+      </div>
     </section>
 
-    <!-- Marquee -->
+    <!-- Ticker: Designer / Dream / Developer -->
+    <div class="ticker">
+      <div class="ticker__track">
+        <span>Designer</span><i class="ticker__icon ticker__icon--wave"></i>
+        <span>Dream</span><i class="ticker__icon ticker__icon--star"></i>
+        <span>Developer</span><i class="ticker__icon ticker__icon--wave"></i>
+        <span>Designer</span><i class="ticker__icon ticker__icon--star"></i>
+        <span>Dream</span><i class="ticker__icon ticker__icon--wave"></i>
+        <span>Developer</span><i class="ticker__icon ticker__icon--star"></i>
+      </div>
+    </div>
+
+    <!-- Marquee 1 -->
     <div class="marquee">
       <div class="marquee__track">
-        <span>Identity</span><span>Motion</span><span>Packaging</span><span>Art Direction</span><span>Sound</span><span>Web</span>
-        <span>Identity</span><span>Motion</span><span>Packaging</span><span>Art Direction</span><span>Sound</span><span>Web</span>
+        <span>We are a dynamic creative studio</span><span>best in design and digital solutions</span><span>we craft exceptional products</span><span>led by a passionate and expert</span><span>with a creative mindset.</span>
+        <span>We are a dynamic creative studio</span><span>best in design and digital solutions</span><span>we craft exceptional products</span><span>led by a passionate and expert</span><span>with a creative mindset.</span>
       </div>
     </div>
 
-    <!-- About -->
-    <section class="about" id="about">
-      <div class="about__grid">
-        <div class="about__text reveal-up">
-          <span class="eyebrow">— About the studio</span>
-          <h2>Six people, one workshop, no interest in being the biggest.</h2>
-          <p>We're a small studio on purpose. Every project gets the same four hands on it from first sketch to final file, no handoffs, no account managers relaying notes. Founded in Lahore in 2019, we now work with makers and small brands across three continents.</p>
-        </div>
-        <div class="about__stats reveal-up">
-          <div class="stat">
-            <div class="stat__num" data-count="72">0</div>
-            <div class="stat__label">Brands built</div>
-          </div>
-          <div class="stat">
-            <div class="stat__num" data-count="6">0</div>
-            <div class="stat__label">Years firing</div>
-          </div>
-          <div class="stat">
-            <div class="stat__num" data-count="4">0</div>
-            <div class="stat__label">People, total</div>
-          </div>
-        </div>
-      </div>
+    <!-- Quote strip with cluster images -->
+    <section class="quote">
+      <img class="quote__img quote__img--1 reveal-scale" src="images/hero-surfboard.jpg" alt="Surfboard on light background" />
+      <p class="quote__text reveal-up">— Best designer<br><span>( self-proclaimed )</span></p>
+      <img class="quote__img quote__img--2 reveal-scale" src="images/hero-robot.jpg" alt="Cute robot on white background" />
     </section>
 
+    <!-- Marquee 2: stats -->
     <div class="marquee marquee--reverse">
       <div class="marquee__track">
-        <span>Slow work, done well</span><span>—</span><span>Small studio, sharp focus</span><span>—</span><span>Built to last longer than the trend</span><span>—</span>
-        <span>Slow work, done well</span><span>—</span><span>Small studio, sharp focus</span><span>—</span><span>Built to last longer than the trend</span><span>—</span>
+        <span>5 years strong</span><span>—</span><span>Remote-first studio</span><span>—</span><span>Webflow specialist</span><span>—</span>
+        <span>5 years strong</span><span>—</span><span>Remote-first studio</span><span>—</span><span>Webflow specialist</span><span>—</span>
       </div>
     </div>
+    <p class="stat-line reveal-up">Serving 50+ clients worldwide</p>
 
-    <!-- Services -->
-    <section class="services" id="services">
-      <span class="eyebrow reveal-up">— What we make</span>
+    <!-- Services: pale mint break -->
+    <section class="services" id="service">
+      <h2 class="services__split reveal-up">
+        <span>We</span><span>make</span>
+      </h2>
       <ul class="services__list">
-        <li class="services__item reveal-up" data-image="identity">
-          <span class="services__name">Brand Identity</span>
-          <span class="services__desc">Names, marks, systems built to survive a decade.</span>
-        </li>
-        <li class="services__item reveal-up" data-image="motion">
-          <span class="services__name">Motion Design</span>
-          <span class="services__desc">Logo animation, launch films, social cutdowns.</span>
-        </li>
-        <li class="services__item reveal-up" data-image="packaging">
-          <span class="services__name">Packaging</span>
-          <span class="services__desc">Structural and print design for physical goods.</span>
-        </li>
-        <li class="services__item reveal-up" data-image="web">
-          <span class="services__name">Web Design &amp; Build</span>
-          <span class="services__desc">Sites that load fast and say one thing clearly.</span>
-        </li>
-        <li class="services__item reveal-up" data-image="art">
-          <span class="services__name">Art Direction</span>
-          <span class="services__desc">Photography and set direction for campaigns.</span>
-        </li>
-        <li class="services__item reveal-up" data-image="sound">
-          <span class="services__name">Sound Identity</span>
-          <span class="services__desc">Sonic logos and audio branding for video.</span>
-        </li>
+        <li class="services__item reveal-up" data-image="web"><span class="services__bold">Web</span> design</li>
+        <li class="services__item reveal-up" data-image="identity"><span class="services__bold">Visual</span> identity</li>
+        <li class="services__item reveal-up" data-image="graphic"><span class="services__bold">Graphic</span> design</li>
+        <li class="services__item reveal-up" data-image="video"><span class="services__bold">Video</span> editing</li>
+        <li class="services__item reveal-up" data-image="mockup"><span class="services__bold">Product</span> mockups</li>
+        <li class="services__item reveal-up" data-image="strategy"><span class="services__bold">Content</span> strategy</li>
+        <li class="services__item reveal-up" data-image="uiux"><span class="services__bold">UI/UX</span> design</li>
       </ul>
       <div class="hover-preview" id="servicePreview"></div>
     </section>
 
     <!-- Work -->
     <section class="work" id="work">
-      <div class="work__bg-text" aria-hidden="true">
-        <div class="work__bg-track">WORK — WORK — WORK — WORK — WORK — WORK — </div>
+      <div class="work__bg-wrap">
+        <div class="work__bg-track">
+          <span>project</span><span>project</span><span>project</span><span>project</span>
+          <span>project</span><span>project</span><span>project</span><span>project</span>
+        </div>
+        <img class="work__bg-fish" src="images/hero-fish.jpg" alt="Beautiful fish in dark background" />
       </div>
-      <span class="eyebrow reveal-up">— Selected work</span>
-      <h2 class="reveal-up">Six brands, six very different problems.</h2>
 
-      <ul class="work__list">
-        <li class="work__item reveal-up" data-image="ember">
-          <span class="work__name">Ember Coffee Co.</span>
-          <span class="work__tag">Identity, Packaging</span>
+      <div class="work__intro">
+        <span class="eyebrow reveal-up">— Featured work</span>
+        <p class="reveal-up">of curated selection of standout<br>projects showcasing our approach.</p>
+      </div>
+
+      <ul class="work__grid">
+        <li class="work__card reveal-up" data-image="metator">
+          <span class="work__name">Metator</span>
+          <img src="images/work-metator.jpg" alt="Cute robot on white background" />
         </li>
-        <li class="work__item reveal-up" data-image="northvine">
-          <span class="work__name">North &amp; Vine</span>
-          <span class="work__tag">Identity, Web</span>
+        <li class="work__card reveal-up" data-image="surfact">
+          <span class="work__name">Surfact</span>
+          <img src="images/work-surfact.jpg" alt="Surf board on light background" />
         </li>
-        <li class="work__item reveal-up" data-image="hallow">
-          <span class="work__name">Hallow Records</span>
-          <span class="work__tag">Motion, Sound</span>
+        <li class="work__card work__card--up reveal-up" data-image="splush">
+          <span class="work__name">Splush</span>
+          <img src="images/work-splush.jpg" alt="Skin care tube with water splash effect" />
         </li>
-        <li class="work__item reveal-up" data-image="tide">
-          <span class="work__name">Tide Studio</span>
-          <span class="work__tag">Web, Art Direction</span>
+        <li class="work__card reveal-up" data-image="spessartine">
+          <span class="work__name">Spessartine</span>
+          <img src="images/work-spessartine.jpg" alt="Orange tinted glasses on light background" />
         </li>
-        <li class="work__item reveal-up" data-image="marrow">
-          <span class="work__name">Marrow</span>
-          <span class="work__tag">Packaging, Identity</span>
+        <li class="work__card reveal-up" data-image="boulevard">
+          <span class="work__name">Boulevard</span>
+          <img src="images/work-boulevard.jpg" alt="Blue flower inside glass bottle" />
         </li>
-        <li class="work__item reveal-up" data-image="lumen">
-          <span class="work__name">Lumen Goods</span>
-          <span class="work__tag">Motion, Web</span>
+        <li class="work__card work__card--up reveal-up" data-image="remisch">
+          <span class="work__name">Remisch</span>
+          <img src="images/work-remisch.jpg" alt="Modern switch design" />
+        </li>
+        <li class="work__card work__card--up reveal-up" data-image="grandier">
+          <span class="work__name">Grandier</span>
+          <img src="images/work-grandier.jpg" alt="Aesthetic shoot of product mockup in green setting" />
+        </li>
+        <li class="work__card reveal-up" data-image="falovi">
+          <span class="work__name">Falovi</span>
+          <img src="images/work-falovi.jpg" alt="A cup of coffee on light background" />
+        </li>
+        <li class="work__card reveal-up" data-image="miscell">
+          <span class="work__name">Miscell</span>
+          <img src="images/work-miscell.jpg" alt="Abstract metallic object" />
         </li>
       </ul>
       <div class="hover-preview" id="workPreview"></div>
@@ -172,32 +200,41 @@
 
     <!-- Process -->
     <section class="process" id="process">
-      <span class="eyebrow reveal-up">— How a project runs</span>
-      <h2 class="reveal-up">Three stages, same as firing clay.</h2>
-      <div class="process__steps">
-        <div class="process__step reveal-up">
-          <span class="process__stage">Listen</span>
-          <p>Two weeks understanding the brand as it actually is today, not as a mood board. We sit with the founders, the product, the customers.</p>
+      <div class="process__pin">
+        <h2>Work flow</h2>
+      </div>
+      <div class="process__rail">
+        <div class="process__card process__card--intro reveal-up">
+          <p>We like to keep things easy. First, we get to know your goals, then we turn them into clear concepts.</p>
+          <span>Think of our process as a friendly collaboration</span>
         </div>
-        <div class="process__step reveal-up">
-          <span class="process__stage">Shape</span>
-          <p>Concepts, refinement, one direction chosen together. This is where most of the back-and-forth lives, and where we're slowest on purpose.</p>
+        <div class="process__card reveal-up">
+          <h3>Discover<br>together</h3>
+          <p>This is where we get to know you and your goals. We chat, ask questions, explore what inspires you.</p>
+          <span class="process__icon process__icon--orange"></span>
         </div>
-        <div class="process__step reveal-up">
-          <span class="process__stage">Fire</span>
-          <p>Final files, motion, launch assets. Once it's fired it's fixed, so nothing reaches this stage until everyone's sure.</p>
+        <div class="process__card reveal-up">
+          <h3>Create the<br>ideas</h3>
+          <p>Turning your thoughts into visuals. We explore concepts, sketch possibilities, and build designs that feel true to your brand.</p>
+          <span class="process__icon process__icon--dark"></span>
+        </div>
+        <div class="process__card reveal-up">
+          <h3>Deliver with<br>care</h3>
+          <p>We make sure everything works smoothly, looks great everywhere, and is easy for you to use.</p>
+          <span class="process__icon process__icon--green"></span>
         </div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section class="contact" id="contact">
+    <section class="contact" id="cta">
+      <h2 class="reveal-up">Say hi!</h2>
       <div class="contact__grid">
         <div class="contact__info reveal-up">
-          <h2>Have a brand<br>that needs shaping?</h2>
-          <p class="contact__detail">hello@Rouxstudio.co</p>
-          <p class="contact__detail">+92 300 123 4567</p>
-          <p class="contact__detail contact__hours">Mon – Fri, 10am – 6pm PKT</p>
+          <p class="contact__detail">8 am – 4 pm UTC+7</p>
+          <p class="contact__detail">Monday – Saturday</p>
+          <p class="contact__detail contact__link">(+12) 345-678-910</p>
+          <p class="contact__detail contact__link">studio.roux@email.com</p>
         </div>
         <form class="contact__form reveal-up" id="contactForm">
           <div class="field">
@@ -207,10 +244,13 @@
             <input type="email" id="cEmail" placeholder="Email address" required />
           </div>
           <div class="field">
-            <textarea id="cMessage" placeholder="Tell us about the project" rows="4" required></textarea>
+            <input type="tel" id="cPhone" placeholder="Phone number" />
+          </div>
+          <div class="field">
+            <textarea id="cMessage" placeholder="Write your message here!" rows="4" required></textarea>
           </div>
           <button type="submit" class="contact__submit">
-            <span>Send message</span>
+            <span>Send now</span>
           </button>
           <p class="contact__status" id="contactStatus"></p>
         </form>
@@ -222,27 +262,33 @@
   <footer class="footer">
     <div class="footer__top">
       <div class="footer__col">
-        <span class="footer__heading">Site map</span>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
+        <span class="footer__heading">Social</span>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
       </div>
       <div class="footer__col">
-        <span class="footer__heading">Elsewhere</span>
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Are.na</a>
+        <span class="footer__heading">Site map</span>
+        <a href="#about">About</a>
+        <a href="#service">Service</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#cta">Contact</a>
       </div>
-      <div class="footer__col footer__col--wordmark">
-        <span class="footer__wordmark">Roux</span>
-        <span class="footer__tag">Brand &amp; motion studio, Lahore</span>
+      <div class="footer__col">
+        <span class="footer__heading">Utilities</span>
+        <a href="#">Style Guide</a>
+        <a href="#">License</a>
+        <a href="#">Changelog</a>
+        <a href="#">Instruction</a>
       </div>
     </div>
+    <div class="footer__wordmark-row">
+      <span class="footer__wordmark">Roux</span>
+    </div>
     <div class="footer__bottom">
-      <span>© 2026 Roux Studio. All rights reserved.</span>
-      <span>Built by hand, in HTML &amp; CSS.</span>
+      <span>Roux by Kitpro</span>
+      <span>Powered by Webflow</span>
     </div>
   </footer>
 
