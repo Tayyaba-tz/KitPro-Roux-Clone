@@ -111,9 +111,9 @@
 
     <!-- Quote strip with cluster images -->
     <section class="quote">
-      <img class="quote__img quote__img--1 reveal-scale" src="images/hero-surfboard.jpg" alt="Surfboard on light background" />
-      <p class="quote__text reveal-up">— Best designer<br><span>( self-proclaimed )</span></p>
-      <img class="quote__img quote__img--2 reveal-scale" src="images/hero-robot.jpg" alt="Cute robot on white background" />
+      <img class="quote__img quote__img--1" src="images/hero-surfboard.jpg" alt="Surfboard on light background" />
+      <p class="quote__text">— Best designer<br><span>( self-proclaimed )</span></p>
+      <img class="quote__img quote__img--2" src="images/hero-robot.jpg" alt="Cute robot on white background" />
     </section>
 
     <!-- Marquee 2: stats -->
@@ -127,18 +127,19 @@
 
     <!-- Services: pale mint break -->
     <section class="services" id="service">
-      <h2 class="services__split reveal-up">
-        <span>We</span><span>make</span>
-      </h2>
-      <ul class="services__list">
-        <li class="services__item reveal-up" data-image="web"><span class="services__bold">Web</span> design</li>
-        <li class="services__item reveal-up" data-image="identity"><span class="services__bold">Visual</span> identity</li>
-        <li class="services__item reveal-up" data-image="graphic"><span class="services__bold">Graphic</span> design</li>
-        <li class="services__item reveal-up" data-image="video"><span class="services__bold">Video</span> editing</li>
-        <li class="services__item reveal-up" data-image="mockup"><span class="services__bold">Product</span> mockups</li>
-        <li class="services__item reveal-up" data-image="strategy"><span class="services__bold">Content</span> strategy</li>
-        <li class="services__item reveal-up" data-image="uiux"><span class="services__bold">UI/UX</span> design</li>
-      </ul>
+      <div class="services__pin">
+        <span class="services__word services__word--we">We</span>
+        <ul class="services__list" id="servicesList">
+          <li class="services__item" data-image="web"><span class="services__bold">Web</span> design</li>
+          <li class="services__item" data-image="identity"><span class="services__bold">Visual</span> identity</li>
+          <li class="services__item" data-image="graphic"><span class="services__bold">Graphic</span> design</li>
+          <li class="services__item" data-image="video"><span class="services__bold">Video</span> editing</li>
+          <li class="services__item" data-image="mockup"><span class="services__bold">Product</span> mockups</li>
+          <li class="services__item" data-image="strategy"><span class="services__bold">Content</span> strategy</li>
+          <li class="services__item" data-image="uiux"><span class="services__bold">UI/UX</span> design</li>
+        </ul>
+        <span class="services__word services__word--make">make</span>
+      </div>
       <div class="hover-preview" id="servicePreview"></div>
     </section>
 
@@ -204,21 +205,21 @@
         <h2>Work flow</h2>
       </div>
       <div class="process__rail">
-        <div class="process__card process__card--intro reveal-up">
+        <div class="process__card process__card--intro">
           <p>We like to keep things easy. First, we get to know your goals, then we turn them into clear concepts.</p>
           <span>Think of our process as a friendly collaboration</span>
         </div>
-        <div class="process__card reveal-up">
+        <div class="process__card">
           <h3>Discover<br>together</h3>
           <p>This is where we get to know you and your goals. We chat, ask questions, explore what inspires you.</p>
           <span class="process__icon process__icon--orange"></span>
         </div>
-        <div class="process__card reveal-up">
+        <div class="process__card">
           <h3>Create the<br>ideas</h3>
           <p>Turning your thoughts into visuals. We explore concepts, sketch possibilities, and build designs that feel true to your brand.</p>
           <span class="process__icon process__icon--dark"></span>
         </div>
-        <div class="process__card reveal-up">
+        <div class="process__card">
           <h3>Deliver with<br>care</h3>
           <p>We make sure everything works smoothly, looks great everywhere, and is easy for you to use.</p>
           <span class="process__icon process__icon--green"></span>
@@ -228,15 +229,15 @@
 
     <!-- Contact -->
     <section class="contact" id="cta">
-      <h2 class="reveal-up">Say hi!</h2>
+      <h2>Say hi!</h2>
       <div class="contact__grid">
-        <div class="contact__info reveal-up">
+        <div class="contact__info">
           <p class="contact__detail">8 am – 4 pm UTC+7</p>
           <p class="contact__detail">Monday – Saturday</p>
           <p class="contact__detail contact__link">(+12) 345-678-910</p>
           <p class="contact__detail contact__link">studio.roux@email.com</p>
         </div>
-        <form class="contact__form reveal-up" id="contactForm">
+        <form class="contact__form" id="contactForm">
           <div class="field">
             <input type="text" id="cName" placeholder="Your name" required />
           </div>
@@ -292,6 +293,11 @@
     </div>
   </footer>
 
+  <!-- GSAP & Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis for smooth scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
