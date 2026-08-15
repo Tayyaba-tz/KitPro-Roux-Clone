@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Roux — Studio</title>
 <meta name="description" content="Roux is a creative studio designing how brands think and move across today's media." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,10 +16,6 @@
   <div class="preloader" id="preloader">
     <div class="preloader__mark">Roux</div>
   </div>
-
-  <!-- Custom cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
 
   <!-- Promo popup, bottom left -->
   <div class="popup" id="popup">
@@ -46,8 +42,8 @@
   <!-- Navbar -->
   <header class="nav" id="nav">
     <a href="#top" class="nav__logo">Roux</a>
-    <button class="nav__toggle" id="navToggle" aria-label="Open menu">
-      <span></span><span></span>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
     </button>
   </header>
 
@@ -84,7 +80,9 @@
       </h1>
 
       <div class="hero__cluster">
-        <img class="hero__cluster-img hero__cluster-img--cat reveal-scale" src="images/hero-cat.jpg" alt="Cat wearing sunglasses" />
+        <div class="hero__float hero__float--cat">
+          <img class="hero__cluster-img hero__cluster-img--cat reveal-scale" src="images/hero-cat.jpg" alt="Cat wearing sunglasses" />
+        </div>
         <img class="hero__cluster-img hero__cluster-img--swatch reveal-scale" src="images/hero-skincare.jpg" alt="" />
       </div>
     </section>
@@ -142,6 +140,14 @@
       </div>
       <div class="hover-preview" id="servicePreview"></div>
     </section>
+
+    <!-- Theme flip: light services panel flips to reveal the dark work section -->
+    <div class="theme-flip" id="themeFlip">
+      <div class="theme-flip__inner">
+        <div class="theme-flip__face theme-flip__face--front"></div>
+        <div class="theme-flip__face theme-flip__face--back"></div>
+      </div>
+    </div>
 
     <!-- Work -->
     <section class="work" id="work">
@@ -201,30 +207,51 @@
 
     <!-- Process -->
     <section class="process" id="process">
-      <div class="process__pin">
-        <h2>Work flow</h2>
+      <div class="process__heading">
+        <span class="eyebrow reveal-up">— How we work</span>
+        <h2 class="reveal-up">Work flow</h2>
       </div>
-      <div class="process__rail">
-        <div class="process__card process__card--intro">
-          <p>We like to keep things easy. First, we get to know your goals, then we turn them into clear concepts.</p>
-          <span>Think of our process as a friendly collaboration</span>
+      <div class="process__stack" id="processStack">
+        <div class="process__slot reveal-up">
+          <div class="process__card process__card--intro">
+            <p>We like to keep things easy. First, we get to know your goals, then we turn them into clear concepts.</p>
+            <span>Think of our process as a friendly collaboration</span>
+          </div>
         </div>
-        <div class="process__card">
-          <h3>Discover<br>together</h3>
-          <p>This is where we get to know you and your goals. We chat, ask questions, explore what inspires you.</p>
-          <span class="process__icon process__icon--orange"></span>
+        <div class="process__slot reveal-up">
+          <div class="process__card">
+            <h3>Discover<br>together</h3>
+            <p>This is where we get to know you and your goals. We chat, ask questions, explore what inspires you.</p>
+            <span class="process__icon process__icon--orange">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </span>
+          </div>
         </div>
-        <div class="process__card">
-          <h3>Create the<br>ideas</h3>
-          <p>Turning your thoughts into visuals. We explore concepts, sketch possibilities, and build designs that feel true to your brand.</p>
-          <span class="process__icon process__icon--dark"></span>
+        <div class="process__slot reveal-up">
+          <div class="process__card">
+            <h3>Create the<br>ideas</h3>
+            <p>Turning your thoughts into visuals. We explore concepts, sketch possibilities, and build designs that feel true to your brand.</p>
+            <span class="process__icon process__icon--dark">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </span>
+          </div>
         </div>
-        <div class="process__card">
-          <h3>Deliver with<br>care</h3>
-          <p>We make sure everything works smoothly, looks great everywhere, and is easy for you to use.</p>
-          <span class="process__icon process__icon--green"></span>
+        <div class="process__slot reveal-up">
+          <div class="process__card">
+            <h3>Deliver with<br>care</h3>
+            <p>We make sure everything works smoothly, looks great everywhere, and is easy for you to use.</p>
+            <span class="process__icon process__icon--green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </span>
+          </div>
         </div>
       </div>
+
+      <!-- "Work flow" outro heading, split-word like the hero title -->
+      <h2 class="process__outro">
+        <span class="split-line"><span class="split-word">Work</span></span>
+        <span class="split-line"><span class="split-word">flow</span></span>
+      </h2>
     </section>
 
     <!-- Contact -->

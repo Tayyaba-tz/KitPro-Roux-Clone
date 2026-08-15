@@ -1,5 +1,38 @@
+// ===================== LIBRARY FALLBACK =====================
+// If GSAP, ScrollTrigger or Lenis fail to load (CDN blocked, offline,
+// slow connection) the page must not get stuck behind the preloader
+// with invisible text. This checks for the libraries first and, if
+// any are missing, reveals all content immediately and stops the
+// rest of this file from running.
+(function () {
+  var libsReady = window.gsap && window.ScrollTrigger && window.Lenis;
+  if (libsReady) return;
+
+  var reveal = function () {
+    var preloader = document.getElementById("preloader");
+    // Give the "Roux" mark a brief guaranteed moment on screen even
+    // when the animation libraries never loaded.
+    setTimeout(function () {
+      if (preloader) preloader.classList.add("is-hidden");
+      document.body.classList.add("is-loaded", "no-gsap");
+    }, 1100);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", reveal);
+  } else {
+    reveal();
+  }
+})();
+
+if (!(window.gsap && window.ScrollTrigger && window.Lenis)) {
+  throw new Error("Roux: animation libraries failed to load, running in fallback mode.");
+}
+
 // ===================== INITIALIZATION =====================
 gsap.registerPlugin(ScrollTrigger);
+
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Initialize Lenis for smooth scrolling
 const lenis = new Lenis({
@@ -29,11 +62,13 @@ window.addEventListener("load", () => {
     preloader.classList.add("is-hidden");
     document.body.classList.add("is-loaded");
     playHeroReveal();
-  }, 900);
+  }, 1300);
 });
 
-// ===================== CUSTOM CURSOR =====================
-const cursor = document.getElementById("cursor");
+// ===================== AMBIENT CURSOR GLOW =====================
+// A soft blue glow that trails the pointer with a slight lag. The
+// system pointer itself is left alone; interactive elements just use
+// normal CSS :hover states and cursor: pointer.
 const cursorGlow = document.getElementById("cursorGlow");
 
 let mouseX = 0, mouseY = 0;
@@ -42,16 +77,8 @@ let glowX = 0, glowY = 0;
 document.addEventListener("mousemove", (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
-  
-  gsap.to(cursor, {
-    x: mouseX,
-    y: mouseY,
-    duration: 0.1,
-    ease: "power2.out"
-  });
 });
 
-// glow follows with a slight lag
 function animateGlow() {
   glowX += (mouseX - glowX) * 0.1;
   glowY += (mouseY - glowY) * 0.1;
@@ -64,11 +91,6 @@ function animateGlow() {
 }
 animateGlow();
 
-document.querySelectorAll("a, button, .services__item, .work__card").forEach((el) => {
-  el.addEventListener("mouseenter", () => cursor.classList.add("is-active"));
-  el.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
-});
-
 // Work cards hover effect
 document.querySelectorAll(".work__card").forEach((card) => {
   const img = card.querySelector("img");
@@ -79,6 +101,15 @@ document.querySelectorAll(".work__card").forEach((card) => {
     gsap.to(img, { scale: 1, duration: 0.6, ease: "power2.out" });
   });
 });
+
+// ===================== PROMO POPUP =====================
+const popup = document.getElementById("popup");
+const popupClose = document.getElementById("popupClose");
+if (popup && popupClose) {
+  popupClose.addEventListener("click", () => {
+    popup.classList.add("is-closed");
+  });
+}
 
 // ===================== NAVBAR =====================
 const nav = document.getElementById("nav");
@@ -110,6 +141,8 @@ const menuLinks = mobileMenu.querySelectorAll(".menu-panel__links a");
 function openMenu() {
   mobileMenu.classList.add("is-open");
   nav.classList.add("menu-open");
+  navToggle.setAttribute("aria-expanded", "true");
+  navToggle.setAttribute("aria-label", "Close menu");
   document.body.style.overflow = "hidden";
   
   gsap.fromTo(menuLinks, 
@@ -120,6 +153,8 @@ function openMenu() {
 function closeMenu() {
   mobileMenu.classList.remove("is-open");
   nav.classList.remove("menu-open");
+  navToggle.setAttribute("aria-expanded", "false");
+  navToggle.setAttribute("aria-label", "Open menu");
   document.body.style.overflow = "";
 }
 
@@ -139,11 +174,8 @@ function playHeroReveal() {
     stagger: 0.1,
     ease: "power4.out"
   })
-  .to(".hero__rule", {
-    scaleX: 1,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.inOut"
+  .add(() => {
+    document.querySelector(".hero__rule").classList.add("is-active");
   }, "-=0.8")
   .to(".hero__tagline, .hero__handle", {
     y: 0,
@@ -184,6 +216,22 @@ marquees.forEach((track) => {
   });
 });
 
+// The intro marquee ("We are a dynamic creative studio...") brightens
+// from dim gray to full ink color as the page scrolls through it.
+const introMarquee = document.querySelector(".marquee:not(.marquee--reverse)");
+if (introMarquee && !prefersReducedMotion) {
+  gsap.to(introMarquee.querySelectorAll(".marquee__track span"), {
+    color: "#f5f5f2",
+    ease: "none",
+    scrollTrigger: {
+      trigger: introMarquee,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+}
+
 // ===================== SERVICE HOVER PREVIEW =====================
 const servicePreview = document.getElementById("servicePreview");
 const serviceImages = {
@@ -223,7 +271,22 @@ document.querySelectorAll(".services__item").forEach((item) => {
   });
 });
 
-// ===================== WORK SECTION PARALLAX =====================
+// ===================== THEME FLIP (services -> work) =====================
+const themeFlip = document.getElementById("themeFlip");
+if (themeFlip && !prefersReducedMotion) {
+  gsap.to(themeFlip.querySelector(".theme-flip__inner"), {
+    rotateX: 180,
+    ease: "none",
+    scrollTrigger: {
+      trigger: themeFlip,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+}
+
+// ===================== WORK: BACKGROUND ENTRANCE + DRAG GALLERY =====================
 gsap.to(".work__bg-track", {
   xPercent: -20,
   ease: "none",
@@ -235,58 +298,57 @@ gsap.to(".work__bg-track", {
   }
 });
 
-// Background cluster settles into place as the section comes into view
+// Background cluster settles into place as the section comes into view.
+// The fish image itself starts as a big rotated square (reads as a
+// diamond) and un-rotates into the small circle badge, matching the
+// reference site; the ticker text behind it just fades in.
 const workBgWrap = document.querySelector(".work__bg-wrap");
+const workBgFish = document.querySelector(".work__bg-fish");
 if (workBgWrap && !prefersReducedMotion) {
   gsap.fromTo(workBgWrap,
-    { opacity: 0, scale: 0.82, rotate: -8 },
+    { opacity: 0 },
     {
-      opacity: 1, scale: 1, rotate: 0, duration: 1.1, ease: "power3.out",
+      opacity: 1, duration: 0.9, ease: "power2.out",
       scrollTrigger: { trigger: ".work", start: "top 75%", toggleActions: "play none none none" }
     }
   );
 }
-
-// Grid columns drift at slightly different rates while scrolling (desktop only)
-const workCards = document.querySelectorAll(".work__card");
-if (workCards.length && !prefersReducedMotion) {
-  ScrollTrigger.matchMedia({
-    "(min-width: 1025px)": function () {
-      workCards.forEach((card, i) => {
-        const col = i % 3;
-        const distance = col === 1 ? 60 : -40; // middle column drifts opposite the outer two
-        gsap.to(card, {
-          yPercent: distance,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".work",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-          }
-        });
-      });
+if (workBgFish && !prefersReducedMotion) {
+  gsap.fromTo(workBgFish,
+    { scale: 2.1, rotate: 45, borderRadius: "0%" },
+    {
+      scale: 1, rotate: 0, borderRadius: "50%", duration: 1.2, ease: "power3.out",
+      scrollTrigger: { trigger: ".work", start: "top 75%", toggleActions: "play none none none" }
     }
-  });
+  );
+} else if (workBgFish) {
+  gsap.set(workBgFish, { scale: 1, rotate: 0, borderRadius: "50%" });
 }
 
-// ===================== PROCESS SECTION (HORIZONTAL SCROLL) =====================
-const processSection = document.querySelector(".process");
-const processRail = document.querySelector(".process__rail");
-const processCards = document.querySelectorAll(".process__card");
+// Project grid is a horizontal strip you can drag/scroll through with the mouse
+const workGrid = document.querySelector(".work__grid");
+if (workGrid) {
+  let isDown = false, startX = 0, startScroll = 0;
 
-if (processSection && processRail) {
-  gsap.to(processRail, {
-    x: () => -(processRail.scrollWidth - window.innerWidth + 100),
-    ease: "none",
-    scrollTrigger: {
-      trigger: processSection,
-      start: "top top",
-      end: () => `+=${processRail.scrollWidth}`,
-      scrub: 1,
-      pin: true,
-      anticipatePin: 1,
-    }
+  workGrid.addEventListener("mousedown", (e) => {
+    isDown = true;
+    workGrid.classList.add("is-dragging");
+    startX = e.pageX;
+    startScroll = workGrid.scrollLeft;
+  });
+
+  ["mouseleave", "mouseup"].forEach((evt) => {
+    workGrid.addEventListener(evt, () => {
+      isDown = false;
+      workGrid.classList.remove("is-dragging");
+    });
+  });
+
+  workGrid.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const walk = (e.pageX - startX) * 1.2;
+    workGrid.scrollLeft = startScroll - walk;
   });
 }
 
@@ -294,7 +356,6 @@ if (processSection && processRail) {
 // "We" and "make" sit adjacent at rest; scrolling through the pin splits
 // them apart to the edges while the 7 service lines stagger-reveal in the
 // middle — matches the reference site's scroll behavior in this section.
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const servicesPin = document.querySelector(".services__pin");
 const servicesList = document.getElementById("servicesList");
 const servicesItems = document.querySelectorAll(".services__item");
@@ -312,7 +373,8 @@ if (servicesPin && !prefersReducedMotion) {
     }
   })
   .to(servicesList, { maxWidth: "min(70vw, 900px)", opacity: 1, duration: 0.4, ease: "none" })
-  .to(servicesItems, { opacity: 1, y: 0, stagger: 0.15, duration: 0.6, ease: "none" }, "<0.05");
+  .to(servicesItems, { opacity: 1, y: 0, stagger: 0.15, duration: 0.6, ease: "none" }, "<0.05")
+  .to(servicesItems, { opacity: 0.18, duration: 0.3, ease: "none" }, ">0.15");
 } else if (servicesList) {
   gsap.set(servicesList, { maxWidth: "none", opacity: 1 });
   gsap.set(servicesItems, { opacity: 1, y: 0 });
@@ -339,6 +401,33 @@ if (quoteSection && !prefersReducedMotion) {
   gsap.set(quoteSection.querySelectorAll(".quote__img, .quote__text"), { opacity: 1, scale: 1, y: 0 });
 }
 
+// ===================== PROCESS OUTRO "Work / flow" =====================
+// Split-word reveal, same treatment as the hero title, triggered when
+// it scrolls into view after the pinned process cards finish.
+const processOutro = document.querySelector(".process__outro");
+if (processOutro) {
+  const outroWords = processOutro.querySelectorAll(".split-word");
+  if (!prefersReducedMotion) {
+    gsap.fromTo(outroWords,
+      { y: "110%", opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.12,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: processOutro,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  } else {
+    gsap.set(outroWords, { y: 0, opacity: 1 });
+  }
+}
+
 // ===================== CONTACT SEQUENCE =====================
 // Heading, then info column, then form — a light stagger instead of
 // all three fading in together.
@@ -355,6 +444,43 @@ if (contactSection && !prefersReducedMotion) {
     .to(heading, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" })
     .to(info, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.35")
     .to(form, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.4");
+}
+
+// ===================== CONTACT FORM =====================
+// The markup already had loading/success/error states in the CSS but
+// nothing wired them up, so the form just reloaded the page on submit.
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  const submitBtn = contactForm.querySelector(".contact__submit");
+  const status = document.getElementById("contactStatus");
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("cName");
+    const email = document.getElementById("cEmail");
+    const message = document.getElementById("cMessage");
+
+    if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+      status.textContent = "Please fill in all required fields.";
+      status.classList.remove("is-success");
+      status.classList.add("is-visible", "is-error");
+      return;
+    }
+
+    submitBtn.classList.add("is-loading");
+    status.classList.remove("is-visible", "is-error", "is-success");
+
+    // No backend is wired up in this static export, so this mirrors
+    // the reference template's front-end confirmation state.
+    setTimeout(() => {
+      submitBtn.classList.remove("is-loading");
+      status.textContent = "Thank you! Your submission has been received!";
+      status.classList.remove("is-error");
+      status.classList.add("is-visible", "is-success");
+      contactForm.reset();
+    }, 700);
+  });
 }
 
 // ===================== SCROLL REVEALS =====================
